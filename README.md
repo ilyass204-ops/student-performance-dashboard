@@ -1,4 +1,3 @@
-
 # Student Performance Analytics Dashboard
 
 ## Overview
@@ -6,6 +5,9 @@
 This project is a Python application for exploring
 student academic performance using grades, attendance,
 and weekly study hours.
+
+The dashboard uses pandas and Streamlit to analyze grades, attendance,
+and study habits, with interactive visualizations and data-driven insights.
 
 ## Features
 
