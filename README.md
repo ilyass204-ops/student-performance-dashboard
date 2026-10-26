@@ -1,50 +1,89 @@
-# Student Performance Analytics Dashboard
+# Student Performance Intelligence Dashboard
 
-## Overview
-
-This project is a Python application for exploring
-student academic performance using grades, attendance,
-and weekly study hours.
-
-The dashboard uses pandas and Streamlit to analyze grades, attendance,
-and study habits, with interactive visualizations and data-driven insights.
+An interactive Python dashboard for analyzing student academic performance, attendance, and study habits. Built with Streamlit, pandas, and Matplotlib, with optional AI-generated class insights.
 
 ## Features
 
-- Display student records
-- Calculate average scores
-- Summarize the number of students
-- Explore academic performance using data analysis
+- Explore student academic records through an interactive dashboard
+- Analyze average scores and performance categories
+- Visualize academic performance and study habits
+- Upload and validate student datasets
+- Identify students who may need additional academic support
+- Generate teacher-focused AI insights from aggregated class statistics
+- Fall back to rule-based insights when AI is unavailable
+- Run automated tests for data processing, analysis, and AI insight logic
 
-## Technologies
+## Technology Stack
 
 - Python
-- pandas
 - Streamlit
+- pandas
 - Matplotlib
+- Google Gemini API (`google-genai`)
+- pytest
 
-## Installation
+## Getting Started
 
-Install Python, then install the required libraries:
+### 1. Set up the environment
+
+Install Python, then create and activate a virtual environment if you do not already have one.
 
 ```bash
-pip install -r requirements.txt
+python -m venv .venv
 ```
 
-## Run the Application
+Windows PowerShell:
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+### 2. Install dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+### 3. Configure optional AI insights
+
+Set `GEMINI_API_KEY` as an environment variable or configure it in `.streamlit/secrets.toml`.
+
+Example secrets configuration:
+
+```toml
+GEMINI_API_KEY = "your-api-key-here"
+```
+
+Never commit API keys or other secrets to version control.
+
+AI insights are optional. Without a configured key, the dashboard can provide rule-based insights. The default model is `gemini-3.5-flash-lite`; `GEMINI_MODEL` can be used to select another model supported by your code.
+
+### 4. Run the dashboard
 
 ```bash
 python -m streamlit run app.py
 ```
 
-## Dataset
+Streamlit will display a local URL in your terminal. Open that URL in your browser.
 
-The initial dataset contains fictional student records
-for testing and demonstration purposes.
+## Testing
+
+Run the automated test suite:
+
+```bash
+python -m pytest -v
+```
+
+The current test suite contains 17 tests covering data validation, analysis utilities, and AI insight behavior.
+
+## Dataset and Privacy
+
+Use fictional or appropriately anonymized student data for demonstrations. The local `students.csv` file is excluded from version control; provide a suitable dataset through the application's supported data-loading workflow.
+
+AI insights are designed to use aggregated class statistics rather than student names or IDs.
 
 ## Future Improvements
 
-- Add interactive charts
-- Add data upload and validation
-- Add student search and filters
-- Add automated tests
+- Expand dashboard usability and accessibility testing
+- Add more robust data-quality reporting
+- Improve documentation and deployment instructions

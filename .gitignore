@@ -1,5 +1,21 @@
-
+# Python environments
 .venv/
+.venv-1/
+venv/
+
+# Python cache and test artifacts
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+
+# Secrets
 .streamlit/secrets.toml
+.env
+.env.*
+
+# Local datasets
+students.csv
+
+# Local backup files
+app_before_redesign.py.py
+app_day2_backup.py

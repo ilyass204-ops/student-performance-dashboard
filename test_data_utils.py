@@ -49,6 +49,17 @@ def test_invalid_score_is_removed():
     assert result.iloc[0]["student_id"] == "A02"
 
 
+def test_infinite_study_hours_are_removed():
+    data = sample_data()
+    data["study_hours"] = data["study_hours"].astype(float)
+    data.loc[0, "study_hours"] = float("inf")
+
+    result = clean_data(data)
+
+    assert len(result) == 1
+    assert result.iloc[0]["student_id"] == "A02"
+
+
 def test_duplicate_ids_are_removed():
     data = sample_data()
     data.loc[1, "student_id"] = "A01"

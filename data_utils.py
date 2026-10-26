@@ -49,6 +49,9 @@ def clean_data(data):
     invalid = (
         data[["student_id", "name"]].isna().any(axis=1)
         | data[NUMERIC_COLUMNS].isna().any(axis=1)
+        | data[NUMERIC_COLUMNS].isin(
+            [float("inf"), float("-inf")]
+        ).any(axis=1)
         | ~data["math_score"].between(0, 100)
         | ~data["programming_score"].between(0, 100)
         | ~data["attendance"].between(0, 100)
