@@ -314,7 +314,7 @@ if uploaded_file is not None:
         st.stop()
 else:
     try:
-        sample_data_path = Path(__file__).resolve().with_name("students.csv")
+        sample_data_path = Path(__file__).resolve().with_name("sample_students.csv")
         raw_data = pd.read_csv(sample_data_path)
         source_name = "students.csv"
     except FileNotFoundError:
@@ -465,11 +465,11 @@ if search_text:
     search = search_text.strip().lower()
 
     matches_name = filtered_data["name"].str.lower().str.contains(
-        search, na=False
+        search, na=False, regex=False
     )
 
     matches_id = filtered_data["student_id"].str.lower().str.contains(
-        search, na=False
+        search, na=False, regex=False
     )
 
     filtered_data = filtered_data[
@@ -593,7 +593,7 @@ if not filtered_data.empty:
         student_options
     )
 
-    selected_id = selected_student.split(" - ")[0]
+    selected_id = filtered_data.iloc[student_options.index(selected_student)]["student_id"]
 
     student = filtered_data[
         filtered_data["student_id"] == selected_id
@@ -747,3 +747,4 @@ st.caption(
     "This project uses fictional demonstration data. "
     "Performance categories are illustrative, not official grades."
 )
+

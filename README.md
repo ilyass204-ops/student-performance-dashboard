@@ -74,7 +74,7 @@ Run the automated test suite:
 python -m pytest -v
 ```
 
-The current test suite contains 17 tests covering data validation, analysis utilities, and AI insight behavior.
+The current test suite contains 18 tests covering data validation, analysis utilities, and AI insight behavior.
 
 ## Dataset and Privacy
 
@@ -87,3 +87,17 @@ AI insights are designed to use aggregated class statistics rather than student 
 - Expand dashboard usability and accessibility testing
 - Add more robust data-quality reporting
 - Improve documentation and deployment instructions
+## Included demonstration
+
+A fresh checkout opens sample_students.csv, which contains six explicitly fictional records. Upload your own CSV using the same column names. This small synthetic dataset demonstrates functionality; it provides no evidence about real student outcomes or causal relationships.
+
+## Review changes
+
+Search treats typed text literally, including punctuation. Student selection preserves full IDs containing separators. The app includes a startup/search regression test using Streamlit AppTest.
+
+## Deploy on Streamlit Community Cloud
+
+Select this GitHub repository, branch main, and entry point app.py. No API key is required for the demonstration or rule-based insights. Add optional API credentials only through the hosting service secrets settings.
+
+The included six-row fictional dataset is for demonstrating software behavior, not validating educational findings. Scores are equally weighted; support flags use illustrative thresholds of average score below 60 or attendance below 75%.
+
